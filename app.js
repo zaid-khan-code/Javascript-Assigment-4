@@ -189,3 +189,23 @@ count1();
 
 
 
+function Studnet(name, roll) {
+    this.name = name;
+    this.roll = roll;
+};
+
+
+Studnet.prototype.greet = function () {
+    return `Hello my name is ${this.name} and my roll num is ${this.roll}`
+}
+
+Studnet.prototype.rollNumchanged = function () {
+    return `Hello my roll num chaged from this  ${this.roll++} to this ${this.roll} `
+}
+
+
+const hamza = new Studnet("Hamza", 25);
+const bilal = new Studnet("Bilal", 30);
+
+console.log(hamza.rollNumchanged());
+console.log(bilal.greet());
