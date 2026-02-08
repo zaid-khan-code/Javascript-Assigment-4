@@ -370,26 +370,26 @@ delay(1000, "1")
 // ========================
 // Task Manager App
 // ========================
-
+/*
 class TaskManager {
     constructor() {
         let tasks = [];
-
+        
         this.addTask = function (name, duration) {
             tasks.push({ name, duration, completed: false });
             console.log(`Task "${name}" added.`);
         };
-
+        
         this.removeTask = function (name) {
             tasks = tasks.filter(t => t.name !== name);
             console.log(`Task "${name}" removed.`);
         };
-
-
-
+        
+        
+        
         this.runTasks = function () {
             console.log("Running tasks asynchronously");
-
+            
             tasks.forEach(function (task) {
                 setTimeout(
                     function () {
@@ -402,32 +402,29 @@ class TaskManager {
         };
     }
 }
-
-// ========================
-// Example Usage
-// ========================
-
+yu
 const manager = new TaskManager();
 
-// manager.addTask("Clean room", 1000);
-// manager.addTask("Do homework", 2000);
-// manager.addTask("Cook dinner", 1500);
+manager.addTask("Goto Sleep", 2000);
+manager.addTask("Do little Coding", 500); //shorter then sleep hehe 
+manager.addTask("Goto Sleep", 2000);
 
 
-// manager.runTasks();
-
-/*
-========================
-Runtime Observations
-========================
-*/
+manager.runTasks();
 
 
+// ========================
+// Runtime Observations
+// ========================
 
-/*
-1. Tasks completed in order of their durations, not addition order.
 
-2. Without bind, "this" inside setTimeout would be undefined. that was suprising
 
-3. the tasks variable is undefined if i directly do the manager.tasks
+
+
+// 1. Tasks completed in order of their durations, not addition order.
+
+// 2. Without bind, "this" inside setTimeout would be undefined. that was suprising
+
+// 3. the tasks variable is undefined if i directly do the manager.tasks
+
 */
