@@ -188,7 +188,7 @@ count1();
 //======================================================
 
 
-
+/*
 function Studnet(name, roll) {
     this.name = name;
     this.roll = roll;
@@ -209,3 +209,225 @@ const bilal = new Studnet("Bilal", 30);
 
 console.log(hamza.rollNumchanged());
 console.log(bilal.greet());
+*/
+
+
+
+//======================================================
+//                   Tasks 3.2
+//======================================================
+
+
+/*
+class Studnet {
+    constructor(name, roll) {
+        this.name = name;
+        this.roll = roll;
+    }
+};
+
+
+Studnet.prototype.greet = function () {
+    return `Hello my name is ${this.name} and my roll num is ${this.roll}`
+}
+
+Studnet.prototype.rollNumchanged = function () {
+    return `Hello my roll num chaged from this  ${this.roll++} to this ${this.roll} `
+}
+
+
+const hamza = new Studnet("Hamza", 25);
+const bilal = new Studnet("Bilal", 30);
+
+console.log(hamza.rollNumchanged());
+console.log(bilal.greet());
+*/
+
+
+
+
+//======================================================
+//                   Tasks 3.3
+//======================================================
+
+/*
+class Car {
+    model() {
+        console.log("This car have this model :");
+    }
+}
+
+
+// class Toyota extends Car {
+    //     model() {
+        //         super.model();
+        //         console.log("Toyota supra mk4 v18 turbo vo to to to to");   
+        //     }
+        // }
+        
+        
+        class Toyota extends Car {
+            model() {
+                console.log("This car have this model : Toyota supra mk4 v18 turbo vo to to to to");   
+    }
+}
+
+let b = new Car();
+b.model()
+
+
+let a = new Toyota();
+a.model()
+*/
+
+
+
+//======================================================
+//                   Tasks 4.1
+//======================================================
+
+
+/**
+ 
+console.log(" Start of synchronous function ");
+
+
+function exampleFun() {
+    console.log("Inside synchronous function");
+}
+
+exampleFun();
+
+setTimeout(() => {
+    console.log(" Inside setTimeout callback OR Async Function");
+}, 0);
+
+console.log("End of synchronous function");
+
+*/
+
+
+
+//======================================================
+//                   Tasks 4.2
+//======================================================
+
+/*
+setTimeout(() => {
+    console.log("1");
+    
+    setTimeout(() => {
+        console.log("2");
+        
+        setTimeout(() => {
+            console.log("3");
+            
+            setTimeout(() => {
+                console.log("4");
+            }, 1000);
+            
+        }, 1000);
+        
+    }, 1000);
+    
+}, 1000);
+*/
+
+
+
+
+//======================================================
+//                   Tasks 4.3
+//======================================================
+
+
+/*
+function delay(ms, message) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log(message);
+            resolve();
+        }, ms);
+    });
+}
+
+delay(1000, "1")
+.then(() => delay(1000, "2"))
+.then(() => delay(1000, "3"))
+.then(() => delay(1000, "4"))
+.catch((err) => console.error("Something went wrong:", err));
+*/
+
+
+
+//======================================================
+//                   Final Task  
+//======================================================
+
+
+
+
+// ========================
+// Task Manager App
+// ========================
+
+class TaskManager {
+    constructor() {
+        let tasks = [];
+
+        this.addTask = function (name, duration) {
+            tasks.push({ name, duration, completed: false });
+            console.log(`Task "${name}" added.`);
+        };
+
+        this.removeTask = function (name) {
+            tasks = tasks.filter(t => t.name !== name);
+            console.log(`Task "${name}" removed.`);
+        };
+
+
+
+        this.runTasks = function () {
+            console.log("Running tasks asynchronously");
+
+            tasks.forEach(function (task) {
+                setTimeout(
+                    function () {
+                        task.completed = true;
+                        console.log(`Task completed: ${task.name}`);
+                    }.bind(this),
+                    task.duration
+                );
+            }, this);
+        };
+    }
+}
+
+// ========================
+// Example Usage
+// ========================
+
+const manager = new TaskManager();
+
+// manager.addTask("Clean room", 1000);
+// manager.addTask("Do homework", 2000);
+// manager.addTask("Cook dinner", 1500);
+
+
+// manager.runTasks();
+
+/*
+========================
+Runtime Observations
+========================
+*/
+
+
+
+/*
+1. Tasks completed in order of their durations, not addition order.
+
+2. Without bind, "this" inside setTimeout would be undefined. that was suprising
+
+3. the tasks variable is undefined if i directly do the manager.tasks
+*/
